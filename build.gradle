@@ -1,0 +1,19 @@
+plugins {
+    id 'java'
+}
+
+group 'com.ygq'
+version '1.0-SNAPSHOT'
+
+// 必须要指向自定义的依赖文件dependencies.gradle，这样最下方的依赖才能正常引用
+apply from:"$rootDir/dependencies.gradle"
+
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile libs.common
+}
