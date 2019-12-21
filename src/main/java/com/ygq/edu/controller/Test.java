@@ -14,6 +14,6 @@ public class Test {
     @RequestMapping(value = "/test/{name}",method = RequestMethod.GET)
     @ResponseBody
     public String test(@PathVariable(value = "name") String name) {
-        return "Hello:" + name;
+        return "Hello->" + name;
     }
 }

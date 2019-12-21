@@ -9,6 +9,10 @@ ext{
 //                      包地址：当前jar名称：版本号
                     "org.springframework.boot:spring-boot-starter-web:${versions.springBootVersion}",
                     "org.apache.commons:commons-lang3:3.5"
+            ],
+//            开发者，热部署,自动更新修改
+            devtools:[
+                    "org.springframework.boot:spring-boot-devtools:${versions.springBootVersion}"
             ]
     ]
 
