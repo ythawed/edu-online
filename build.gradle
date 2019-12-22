@@ -18,7 +18,3 @@ dependencies {
     compile libs.common
     compile libs.devtools
 }
-bootRun {
-    //开启页面热加载功能
-    addResources = true
-}

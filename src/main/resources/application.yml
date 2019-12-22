@@ -1,5 +1,7 @@
 server:
-  port: 8080
+  servlet:
+    context-path: /edu
+  port: 8081
 
 spring:
   # 设置开启热部署
