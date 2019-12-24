@@ -2,9 +2,36 @@ server:
   servlet:
     context-path: /edu
   port: 8081
+  #  配置https加密
+  ssl:
+    enabled: true
+    key-store: file:F:\javaPlugins\tomcat.keystore
+    key-store-password: 941014
 
+# ====================spring相关
 spring:
   # 设置开启热部署
-  devtools:
-    restart:
-      enabled: true
+  #  devtools:
+  #    restart:
+  #      enabled: true
+  # ====================数据库相关
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/edu_online?useUnicode=true&characterEncoding=utf8&useSSL=false&serverTimezone=GMT%2B8
+    username: root
+    password: 1014
+    # 使用druid连接池
+    type: com.alibaba.druid.pool.DruidDataSource
+
+# ====================微信相关
+# ===========微信支付
+wxpay.appid: wx5beac15ca207cdd40c
+wxpay.appsecret: 5548012f33417fdsdsdd6f96b382fe548215e9
+
+# ====================mybatis相关
+mybatis:
+  configuration:
+    # ==========将数据库查询结果与实体类对应。也就是列名与驼峰型命名映射,另外一种方法就是在mapper使用注解映射列名与驼峰
+    map-underscore-to-camel-case: true
+    # ==========日志输出执行的sql
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl

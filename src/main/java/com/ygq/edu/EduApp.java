@@ -1,5 +1,6 @@
 package com.ygq.edu;
 
+import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
@@ -8,9 +9,10 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  * @date 2019/12/21 0021
  */
 @SpringBootApplication
-public class App {
+@MapperScan("com.ygq.edu.mapper")
+public class EduApp {
 
     public static void main(String[] args) {
-        SpringApplication.run(App.class, args);
+        SpringApplication.run(EduApp.class, args);
     }
 }

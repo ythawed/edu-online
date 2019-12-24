@@ -99,4 +99,18 @@ public class Video implements Serializable {
     this.point = point;
   }
 
+  @Override
+  public String toString() {
+    return "Video{" +
+            "id=" + id +
+            ", title='" + title + '\'' +
+            ", summary='" + summary + '\'' +
+            ", coverImg='" + coverImg + '\'' +
+            ", viewNum=" + viewNum +
+            ", price=" + price +
+            ", createTime=" + createTime +
+            ", online=" + online +
+            ", point=" + point +
+            '}';
+  }
 }

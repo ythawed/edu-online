@@ -18,6 +18,20 @@ public class Episode implements Serializable {
   private java.util.Date createTime;
   private Integer chapterId;
 
+  @Override
+  public String toString() {
+    return "Episode{" +
+            "id=" + id +
+            ", title='" + title + '\'' +
+            ", num=" + num +
+            ", duration='" + duration + '\'' +
+            ", coverImg='" + coverImg + '\'' +
+            ", videoId=" + videoId +
+            ", summary='" + summary + '\'' +
+            ", createTime=" + createTime +
+            ", chapterId=" + chapterId +
+            '}';
+  }
 
   public Integer getId() {
     return id;

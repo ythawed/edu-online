@@ -19,6 +19,21 @@ public class Comment implements Serializable {
   private Integer orderId;
   private Integer videoId;
 
+  @Override
+  public String toString() {
+    return "Comment{" +
+            "id=" + id +
+            ", content='" + content + '\'' +
+            ", userId=" + userId +
+            ", headImg='" + headImg + '\'' +
+            ", name='" + name + '\'' +
+            ", point=" + point +
+            ", up=" + up +
+            ", createTime=" + createTime +
+            ", orderId=" + orderId +
+            ", videoId=" + videoId +
+            '}';
+  }
 
   public Integer getId() {
     return id;

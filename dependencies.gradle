@@ -1,19 +1,32 @@
-ext{
+ext {
     //版本号约束
-    versions=[
-            springBootVersion:'2.2.2.RELEASE'
+    versions = [
+            springBootVersion: '2.0.3.RELEASE'
     ]
-    //第三方包约束
-    libs=[
-            common:[
+    libs = [
+            common  : [
 //                      包地址：当前jar名称：版本号
                     "org.springframework.boot:spring-boot-starter-web:${versions.springBootVersion}",
-                    "org.apache.commons:commons-lang3:3.5"
+                    "org.apache.commons:commons-lang3:3.5",
+//                    "org.springframework.boot:spring-boot-starter-freemarker:${versions.springBootVersion}"
             ],
 //            开发者，热部署,自动更新修改
-            devtools:[
+            devtools: [
                     "org.springframework.boot:spring-boot-devtools:${versions.springBootVersion}"
+            ],
+//            mysql连接驱动
+            mysql   : [
+                    "mysql:mysql-connector-java:8.0.16"
+            ],
+//            mybatis启动
+            mybatis : [
+                    "org.mybatis.spring.boot:mybatis-spring-boot-starter:2.0.1"
+            ],
+//            第三方数据源
+            druid   : [
+                    "com.alibaba:druid:1.1.20"
             ]
+
     ]
 
 }

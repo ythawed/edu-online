@@ -11,10 +11,13 @@ apply from:"$rootDir/dependencies.gradle"
 sourceCompatibility = 1.8
 
 repositories {
-    mavenCentral()
+    maven{url 'http://maven.aliyun.com/nexus/content/groups/public'}
 }
 
 dependencies {
     compile libs.common
     compile libs.devtools
+    compile libs.mysql
+    compile libs.mybatis
+    compile libs.druid
 }

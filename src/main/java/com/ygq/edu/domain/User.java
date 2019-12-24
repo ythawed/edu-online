@@ -99,4 +99,18 @@ public class User implements Serializable {
     this.createTime = createTime;
   }
 
+  @Override
+  public String toString() {
+    return "User{" +
+            "id=" + id +
+            ", openid='" + openid + '\'' +
+            ", name='" + name + '\'' +
+            ", headImg='" + headImg + '\'' +
+            ", phone='" + phone + '\'' +
+            ", sign='" + sign + '\'' +
+            ", sex=" + sex +
+            ", city='" + city + '\'' +
+            ", createTime=" + createTime +
+            '}';
+  }
 }

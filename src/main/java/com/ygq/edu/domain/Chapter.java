@@ -14,6 +14,16 @@ public class Chapter implements Serializable {
   private Integer ordered;
   private java.util.Date createTime;
 
+  @Override
+  public String toString() {
+    return "Chapter{" +
+            "id=" + id +
+            ", videoId=" + videoId +
+            ", title='" + title + '\'' +
+            ", ordered=" + ordered +
+            ", createTime=" + createTime +
+            '}';
+  }
 
   public Integer getId() {
     return id;

@@ -17,9 +17,9 @@ public class VideoOrder implements Serializable {
   private Integer state;
   private java.util.Date createTime;
   private java.util.Date notifyTime;
-    /**
-     * 以分为单位
-     */
+  /**
+   * 以分为单位
+   */
   private Integer totalFee;
   private String nickname;
   private String headImg;
@@ -29,6 +29,29 @@ public class VideoOrder implements Serializable {
   private Integer userId;
   private String ip;
   private Integer del;
+
+  @Override
+  public String toString() {
+    return "VideoOrder{" +
+            "id=" + id +
+            ", openid='" + openid + '\'' +
+            ", outTradeNo='" + outTradeNo + '\'' +
+            ", state=" + state +
+            ", createTime=" + createTime +
+            ", notifyTime=" + notifyTime +
+            ", totalFee=" + totalFee +
+            ", nickname='" + nickname + '\'' +
+            ", headImg='" + headImg + '\'' +
+            ", videoId=" + videoId +
+            ", videoTitle='" + videoTitle + '\'' +
+            ", videoImg='" + videoImg + '\'' +
+            ", userId=" + userId +
+            ", ip='" + ip + '\'' +
+            ", del=" + del +
+            '}';
+  }
+
+
 
 
   public Integer getId() {
