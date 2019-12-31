@@ -1,6 +1,7 @@
 package com.ygq.edu.mapper;
 
 import com.ygq.edu.domain.Video;
+import com.ygq.edu.provider.VideoProvider;
 import org.apache.ibatis.annotations.*;
 
 import java.util.List;
@@ -14,7 +15,6 @@ public interface VideoMapper {
      * 查询所有video
      *
      * @return videos
-     * <p>
      * 因为数据库表的列名（带"_"）与实体类的驼峰类不一致，使用手动映射（可多个）
      * 也可以直接在配置文件中配置mybatis的功能
      */
@@ -40,7 +40,13 @@ public interface VideoMapper {
     @Select("select * from video where id=#{id}")
     Video findById(Integer id);
 
-    @Update("update video set title=#{title} where id=#{id}")
+    /**
+     *      该语句不再使用，更新效果是全覆盖更新，使用UpdateProvider实现部分更新
+     *    //@Update("update video set title=#{title} where id=#{id}")
+     *    指定动态语句VideoProvider类和该类具体的某个方法
+     *    因为该类可以含多个方法，需指定具体
+     */
+    @UpdateProvider(type = VideoProvider.class,method = "updateVideo")
     int update(Video video);
 
     @Delete("delete from video where id=#{id}")

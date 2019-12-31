@@ -1,22 +1,24 @@
 package com.ygq.edu.controller;
 
 import com.ygq.edu.domain.Video;
-import com.ygq.edu.mapper.VideoMapper;
 import com.ygq.edu.service.VideoService;
-import org.apache.ibatis.annotations.Param;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 /**
+ *
+ * 注意：：：：
+ * 当使用@RestController时，方法不需要加@ResponseBody就可以往页面返回对象
+ * 如果使用@Controller，则方法必须加@ResponseBody才可以往页面返回对象
+ *
  * @author ythawed
  * @date 2019/12/21 0021
  */
-@Controller
+@RestController
 @RequestMapping("/api/v1/video")
 public class VideoController {
 
@@ -26,59 +28,28 @@ public class VideoController {
     private VideoService videoService;
 
     /**
-     * 添加video
-     *
-     * @param video 接收请求参数。不需要注解@RequestBody。因为请求参数名称与实体类属性完全一一对应
-     *              这里使用了mybatis获取自增id，见mapper注解
+     * 1.对于不同的请求方式，可以使用对应的已封装的注解名称mapping，如GetMapping
+     * //另一种写法@RequestMapping(value = "/all", method = RequestMethod.GET)
+     * 2.加入分页设置
+     * @param page 结果集分页后，指定定位到的当前页
+     * @param size 当前页包含的数据条数
      */
-    @RequestMapping(value = "/save", method = RequestMethod.POST)
-    @ResponseBody
-    public Integer save(Video video) {
-
-        LOG.info("新增video，video={}", video);
-        int save = videoService.save(video);
-        LOG.info("新增video，数据库自增的id={}", video.getId());
-        return save;
-    }
-
-    /**
-     * 对于不同的请求方式，可以使用对应的已封装的注解名称mapping，如GetMapping
-     */
-    @RequestMapping(value = "/all", method = RequestMethod.GET)
-    @ResponseBody
-    public List<Video> findAllVideos() {
+    @GetMapping("/all")
+    public List<Video> findAllVideos(@RequestParam(value = "page",defaultValue = "1")Integer page,
+                                     @RequestParam(value = "size",defaultValue = "10")Integer size) {
         return videoService.findAll();
     }
 
-    //    @RequestMapping(value = "/{id}", method = RequestMethod.GET)
-//    @ResponseBody
+    /**
+     * 根据id查询video。
+     * 注解true，参数必须带id
+     */
     @GetMapping("/{id}")
-    @ResponseBody
-    public Video findOne(@PathVariable(value = "id") Integer id) {
+    public Video findOne(@PathVariable(value = "id",required = true) Integer id) {
         LOG.info("根据id查询视频，id={}", id);
         Video video = videoService.findById(id);
         LOG.info("根据id查询视频，结果={}", video);
         return video;
     }
-
-    @RequestMapping(value = "/update", method = RequestMethod.POST)
-    @ResponseBody
-    public Integer update(int videoId, String title) {
-        //更新不需要先查data，只需要创建新对象，
-        // 只需设置需要更新的属性即可，mybatis会自动更新属性。
-//        Video video = videoService.findById(videoId);
-        Video video = new Video();
-        video.setId(videoId);
-        video.setTitle(title);
-        return videoService.update(video);
-    }
-
-    @RequestMapping(value = "/delete/{id}", method = RequestMethod.GET)
-    @ResponseBody
-    public Integer delete(@PathVariable Integer id) {
-
-        return videoService.delete(id);
-    }
-
 
 }
