@@ -20,4 +20,6 @@ dependencies {
     compile libs.mysql
     compile libs.mybatis
     compile libs.druid
+    compile libs.jwt
+    compile libs.test
 }

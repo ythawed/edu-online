@@ -25,6 +25,13 @@ ext {
 //            第三方数据源
             druid   : [
                     "com.alibaba:druid:1.1.20"
+            ],
+            jwt     : [
+                    "io.jsonwebtoken:jjwt:0.9.1"
+            ],
+            //            spring boot 测试依赖包
+            test    : [
+                    "org.springframework.boot:spring-boot-starter-test:${versions.springBootVersion}"
             ]
 
     ]

@@ -13,22 +13,43 @@ import org.springframework.context.annotation.PropertySource;
 @PropertySource(value = "classpath:application.yml")
 public class WeChatConfig {
     /**
-     * 微信小程序appid
+     * 微信公众号appid
      */
     @Value("${wxpay.appid}")
     private String appId;
     /**
-     * 小程序密钥
+     * 公众号密钥
      */
     @Value("${wxpay.appsecret}")
     private String appSecret;
 
-    @Override
-    public String toString() {
-        return "WeChatConfig{" +
-                "appId='" + appId + '\'' +
-                ", appSecret='" + appSecret + '\'' +
-                '}';
+    /**
+     * 开发平台id
+     */
+    @Value("${wxopen.appid}")
+    private String openAppId;
+    /**
+     * 开发平台密钥
+     */
+    @Value("${wxopen.appsecret}")
+    private String openAppSecret;
+    /**
+     * 微信开发平台回调第三方服务器的地址
+     */
+    @Value("${wxopen.redirect_url}")
+    private String openRedirectUrl;
+
+    /**
+     * 微信开放平台二维码连接
+     * 该链接需要插入对应三个参数，见%s占位符
+     * appid=%s
+     * redirect_uri=%s
+     * state=%s
+     */
+    private final static String OPEN_QRCODE_URL= "https://open.weixin.qq.com/connect/qrconnect?appid=%s&redirect_uri=%s&response_type=code&scope=snsapi_login&state=%s#wechat_redirect";
+
+    public String getOpenQrcodeUrl() {
+        return OPEN_QRCODE_URL;
     }
 
     public String getAppId() {
@@ -45,5 +66,29 @@ public class WeChatConfig {
 
     public void setAppSecret(String appSecret) {
         this.appSecret = appSecret;
+    }
+
+    public String getOpenAppId() {
+        return openAppId;
+    }
+
+    public void setOpenAppId(String openAppId) {
+        this.openAppId = openAppId;
+    }
+
+    public String getOpenAppSecret() {
+        return openAppSecret;
+    }
+
+    public void setOpenAppSecret(String openAppSecret) {
+        this.openAppSecret = openAppSecret;
+    }
+
+    public String getOpenRedirectUrl() {
+        return openRedirectUrl;
+    }
+
+    public void setOpenRedirectUrl(String openRedirectUrl) {
+        this.openRedirectUrl = openRedirectUrl;
     }
 }

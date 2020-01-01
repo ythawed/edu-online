@@ -27,6 +27,12 @@ spring:
 # ===========微信支付
 wxpay.appid: wx5beac15ca207cdd40c
 wxpay.appsecret: 5548012f33417fdsdsdd6f96b382fe548215e9
+# ===========微信开放平台授权登录
+#微信开放平台配置
+wxopen.appid: wx025575eac69a2d5b
+wxopen.appsecret: deeae310a387fa9d3e8f3830ce64caac
+#重定向url
+wxopen.redirect_url: http://wesell.natapp1.cc/pub/api/v1/wechat/user/callback1
 
 # ====================mybatis相关
 mybatis:
